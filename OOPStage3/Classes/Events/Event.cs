@@ -26,7 +26,6 @@ namespace OOPStage3.Classes.Events
             Color = color;
             Organizer = organizer;
         }
-        
 
     }
 }

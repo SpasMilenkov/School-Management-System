@@ -27,18 +27,16 @@ namespace OOPStage3.Views
             labelYear.Text = FormCalendar.year.ToString();
 
         }
-
-        private void buttonColor_Click(object sender, EventArgs e)
+        private void buttonColor_Click_1(object sender, EventArgs e)
         {
             var cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK)
             {
                 buttonColor.BackColor = cd.Color;
             }
-
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void labelConfirm_Click(object sender, EventArgs e)
         {
             if (checkBoxLecture.Checked)
             {
@@ -68,10 +66,9 @@ namespace OOPStage3.Views
             }
             else
                 MessageBox.Show("Select the type of the event");
-
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void labelCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }

@@ -24,5 +24,19 @@ namespace OOPStage3.Classes.Users
             info.AddRange(Teaches);
             return info;
         }
+        public override List<string> GetCourses()
+        {
+            return Teaches;
+        }
+
+        public override void AddInfo(string paramater)
+        {
+            Teaches.Add(paramater);
+        }
+
+        public override List<string> GetCourses(string lookupParam)
+        {
+            return GetCourses();
+        }
     }
 }

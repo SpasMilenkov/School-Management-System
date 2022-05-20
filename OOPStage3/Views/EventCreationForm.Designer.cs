@@ -38,23 +38,21 @@
             this.label9 = new System.Windows.Forms.Label();
             this.checkBoxLab = new System.Windows.Forms.CheckBox();
             this.checkBoxLecture = new System.Windows.Forms.CheckBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.buttonColor = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxOrganizer = new System.Windows.Forms.TextBox();
             this.richTextBoxDescription = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxCourse = new System.Windows.Forms.TextBox();
+            this.labelConfirm = new System.Windows.Forms.Label();
+            this.labelCancel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 237);
+            this.label1.Location = new System.Drawing.Point(12, 191);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 15);
             this.label1.TabIndex = 54;
@@ -62,7 +60,7 @@
             // 
             // textBoxSubject
             // 
-            this.textBoxSubject.Location = new System.Drawing.Point(12, 255);
+            this.textBoxSubject.Location = new System.Drawing.Point(12, 209);
             this.textBoxSubject.Name = "textBoxSubject";
             this.textBoxSubject.Size = new System.Drawing.Size(239, 23);
             this.textBoxSubject.TabIndex = 53;
@@ -70,7 +68,7 @@
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(12, 61);
+            this.label.Location = new System.Drawing.Point(12, 15);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(69, 15);
             this.label.TabIndex = 52;
@@ -78,7 +76,7 @@
             // 
             // textBoxEventName
             // 
-            this.textBoxEventName.Location = new System.Drawing.Point(12, 79);
+            this.textBoxEventName.Location = new System.Drawing.Point(12, 33);
             this.textBoxEventName.Name = "textBoxEventName";
             this.textBoxEventName.Size = new System.Drawing.Size(241, 23);
             this.textBoxEventName.TabIndex = 51;
@@ -87,7 +85,7 @@
             // 
             this.labelDay.AutoSize = true;
             this.labelDay.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.labelDay.Location = new System.Drawing.Point(12, 211);
+            this.labelDay.Location = new System.Drawing.Point(12, 165);
             this.labelDay.Name = "labelDay";
             this.labelDay.Size = new System.Drawing.Size(27, 15);
             this.labelDay.TabIndex = 50;
@@ -97,7 +95,7 @@
             // labelMonth
             // 
             this.labelMonth.AutoSize = true;
-            this.labelMonth.Location = new System.Drawing.Point(66, 211);
+            this.labelMonth.Location = new System.Drawing.Point(66, 165);
             this.labelMonth.Name = "labelMonth";
             this.labelMonth.Size = new System.Drawing.Size(43, 15);
             this.labelMonth.TabIndex = 49;
@@ -107,7 +105,7 @@
             // labelYear
             // 
             this.labelYear.AutoSize = true;
-            this.labelYear.Location = new System.Drawing.Point(121, 211);
+            this.labelYear.Location = new System.Drawing.Point(121, 165);
             this.labelYear.Name = "labelYear";
             this.labelYear.Size = new System.Drawing.Size(29, 15);
             this.labelYear.TabIndex = 48;
@@ -117,7 +115,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 147);
+            this.label9.Location = new System.Drawing.Point(12, 101);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 15);
             this.label9.TabIndex = 47;
@@ -126,7 +124,7 @@
             // checkBoxLab
             // 
             this.checkBoxLab.AutoSize = true;
-            this.checkBoxLab.Location = new System.Drawing.Point(12, 190);
+            this.checkBoxLab.Location = new System.Drawing.Point(12, 144);
             this.checkBoxLab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxLab.Name = "checkBoxLab";
             this.checkBoxLab.Size = new System.Drawing.Size(133, 19);
@@ -137,7 +135,7 @@
             // checkBoxLecture
             // 
             this.checkBoxLecture.AutoSize = true;
-            this.checkBoxLecture.Location = new System.Drawing.Point(12, 168);
+            this.checkBoxLecture.Location = new System.Drawing.Point(12, 122);
             this.checkBoxLecture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxLecture.Name = "checkBoxLecture";
             this.checkBoxLecture.Size = new System.Drawing.Size(65, 19);
@@ -145,35 +143,16 @@
             this.checkBoxLecture.Text = "Lecture";
             this.checkBoxLecture.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 375);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 22);
-            this.button2.TabIndex = 44;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(100, 375);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 22);
-            this.button1.TabIndex = 43;
-            this.button1.Text = "Confirm";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // buttonColor
             // 
             this.buttonColor.BackColor = System.Drawing.Color.White;
-            this.buttonColor.Location = new System.Drawing.Point(12, 123);
+            this.buttonColor.Location = new System.Drawing.Point(12, 77);
             this.buttonColor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonColor.Name = "buttonColor";
             this.buttonColor.Size = new System.Drawing.Size(241, 22);
             this.buttonColor.TabIndex = 42;
             this.buttonColor.UseVisualStyleBackColor = false;
+            this.buttonColor.Click += new System.EventHandler(this.buttonColor_Click_1);
             // 
             // label5
             // 
@@ -192,45 +171,28 @@
             this.label4.Size = new System.Drawing.Size(0, 15);
             this.label4.TabIndex = 40;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 15);
-            this.label3.TabIndex = 39;
-            this.label3.Text = "Organizer";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 105);
+            this.label2.Location = new System.Drawing.Point(12, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 15);
             this.label2.TabIndex = 38;
             this.label2.Text = "Color";
-            // 
-            // textBoxOrganizer
-            // 
-            this.textBoxOrganizer.Location = new System.Drawing.Point(12, 35);
-            this.textBoxOrganizer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxOrganizer.Name = "textBoxOrganizer";
-            this.textBoxOrganizer.Size = new System.Drawing.Size(241, 23);
-            this.textBoxOrganizer.TabIndex = 37;
             // 
             // richTextBoxDescription
             // 
             this.richTextBoxDescription.Location = new System.Drawing.Point(331, 33);
             this.richTextBoxDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBoxDescription.Name = "richTextBoxDescription";
-            this.richTextBoxDescription.Size = new System.Drawing.Size(361, 364);
+            this.richTextBoxDescription.Size = new System.Drawing.Size(361, 318);
             this.richTextBoxDescription.TabIndex = 36;
             this.richTextBoxDescription.Text = "";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 290);
+            this.label6.Location = new System.Drawing.Point(12, 244);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 15);
             this.label6.TabIndex = 56;
@@ -238,16 +200,42 @@
             // 
             // textBoxCourse
             // 
-            this.textBoxCourse.Location = new System.Drawing.Point(12, 308);
+            this.textBoxCourse.Location = new System.Drawing.Point(12, 262);
             this.textBoxCourse.Name = "textBoxCourse";
             this.textBoxCourse.Size = new System.Drawing.Size(239, 23);
             this.textBoxCourse.TabIndex = 55;
+            // 
+            // labelConfirm
+            // 
+            this.labelConfirm.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelConfirm.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelConfirm.Location = new System.Drawing.Point(115, 322);
+            this.labelConfirm.Name = "labelConfirm";
+            this.labelConfirm.Size = new System.Drawing.Size(97, 29);
+            this.labelConfirm.TabIndex = 58;
+            this.labelConfirm.Text = "Confirm";
+            this.labelConfirm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelConfirm.Click += new System.EventHandler(this.labelConfirm_Click);
+            // 
+            // labelCancel
+            // 
+            this.labelCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelCancel.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCancel.Location = new System.Drawing.Point(12, 322);
+            this.labelCancel.Name = "labelCancel";
+            this.labelCancel.Size = new System.Drawing.Size(97, 29);
+            this.labelCancel.TabIndex = 57;
+            this.labelCancel.Text = "Cancel";
+            this.labelCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelCancel.Click += new System.EventHandler(this.labelCancel_Click);
             // 
             // EventCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 411);
+            this.ClientSize = new System.Drawing.Size(703, 356);
+            this.Controls.Add(this.labelConfirm);
+            this.Controls.Add(this.labelCancel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxCourse);
             this.Controls.Add(this.label1);
@@ -260,14 +248,10 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.checkBoxLab);
             this.Controls.Add(this.checkBoxLecture);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonColor);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxOrganizer);
             this.Controls.Add(this.richTextBoxDescription);
             this.Name = "EventCreationForm";
             this.Text = "EventCreationForm";
@@ -288,16 +272,14 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox checkBoxLab;
         private System.Windows.Forms.CheckBox checkBoxLecture;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonColor;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxOrganizer;
         private System.Windows.Forms.RichTextBox richTextBoxDescription;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxCourse;
+        private System.Windows.Forms.Label labelConfirm;
+        private System.Windows.Forms.Label labelCancel;
     }
 }

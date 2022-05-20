@@ -14,6 +14,7 @@ using OxyPlot.Series;
 using OxyPlot.Axes;
 using OOPStage3.Classes;
 using OOPStage3.Properties;
+using OxyPlot.Legends;
 
 namespace OOPStage3.Views
 {
@@ -257,6 +258,11 @@ namespace OOPStage3.Views
             });
             plotViewGrades.Model.Background = OxyColor.FromRgb(panelNavigation.BackColor.R, panelNavigation.BackColor.G, panelNavigation.BackColor.B);
             plotViewGrades.Model.TextColor = OxyColor.FromRgb(255, 255, 255);
+            plotViewGrades.Model.Legends.Add(new Legend()
+            {
+                LegendTitle = "Legend",
+                LegendPosition = LegendPosition.RightBottom,
+            });
             foreach (var subject in plotSubjects)
             {
                 int i = 0; //for debugging
@@ -381,11 +387,6 @@ namespace OOPStage3.Views
                 return;
             FormInfo formInfo = new();
             formInfo.ShowDialog();
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

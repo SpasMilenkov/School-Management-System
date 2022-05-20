@@ -43,8 +43,13 @@ namespace OOPStage3.Views
             month = now.Month;
             year = now.Year;
         }
+        private void FormCalendar_Load(object sender, EventArgs e)
+        {
+            DisplayDays();
+            FillCalendar(month, year);
+        }
 
-        private void buttonNext_Click(object sender, EventArgs e)
+        private void labelNext_Click(object sender, EventArgs e)
         {
             //clear the day containers
             flowLayoutPanelDays.Controls.Clear();
@@ -58,7 +63,7 @@ namespace OOPStage3.Views
             FillCalendar(month, year);
         }
 
-        private void buttonPrev_Click(object sender, EventArgs e)
+        private void labelBack_Click(object sender, EventArgs e)
         {
             //clear the day containers
             flowLayoutPanelDays.Controls.Clear();
@@ -69,13 +74,6 @@ namespace OOPStage3.Views
                 year--;
                 month = 12;
             }
-            FillCalendar(month, year);
-
-        }
-
-        private void FormCalendar_Load(object sender, EventArgs e)
-        {
-            DisplayDays();
             FillCalendar(month, year);
         }
 

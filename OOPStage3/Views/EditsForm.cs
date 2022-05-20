@@ -116,7 +116,8 @@ namespace OOPStage3.Views
 
         private void radioButtonGrades_CheckedChanged(object sender, EventArgs e)
         {
-            label3.Text = "Amount";
+            label3.Text = "Amount: ";
+            label4.Text = "Subject: ";
             textBox6.Visible = false;
             textBox5.Visible = false;
             label5.Visible = false;
@@ -125,7 +126,6 @@ namespace OOPStage3.Views
             textBox3.Visible = true;
             label4.Visible = true;
             label3.Visible = true;
-            label4.Text = "Subject";
             this.labelAdd.Location = new Point(300, 390);
         }
 

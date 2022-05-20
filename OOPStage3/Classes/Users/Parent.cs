@@ -24,5 +24,23 @@ namespace OOPStage3.Classes.Users
         {
             return Students;
         }
+        public override List<string> GetCourses(string lookupParam)
+        {
+            if(lookupParam == "0")
+                return GetCourses();
+
+            return Students[int.Parse(lookupParam)].GetCourses();
+
+        }
+
+        public override void AddInfo(string paramater)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<string> GetCourses()
+        {
+            return Students[0].GetCourses();
+        }
     }
 }

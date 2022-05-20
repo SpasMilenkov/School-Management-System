@@ -23,15 +23,16 @@ namespace OOPStage3.Views
                     ControlStyles.AllPaintingInWmPaint |
                     ControlStyles.OptimizedDoubleBuffer, true);
             int day = Convert.ToInt32(labelCustomEvent.Text);
-            //if (_eventControls.EventExists(day))
-            //{
-            //    var firstEvent = _eventControls.GetEvent(int.Parse(labelCustomEvent.Text)).First();
-            //    //string[] splitter = firstEvent.Color.Split(',');
-            //    this.BackColor = Color.FromArgb(100, firstEvent.Color);
-            //}
-            label.Text = "";
             this.ForeColor = Color.White;
             this.BackColor = Color.FromArgb(100, 0, 0, 0);
+            if (_eventControls.EventExists(day))
+            {
+                var firstEvent = _eventControls.GetEvent(int.Parse(labelCustomEvent.Text)).First();
+                //string[] splitter = firstEvent.Color.Split(',');
+                this.BackColor = Color.FromArgb(100, firstEvent.Color);
+            }
+            label.Text = "";
+
         }
 
         public void Days(int numday)
@@ -40,7 +41,13 @@ namespace OOPStage3.Views
             if (_customEvent != null)
                 label.Text = _customEvent.Name;
         }
-        private void DayControl_MouseDoubleClick(object sender, MouseEventArgs e)
+
+        private void DayControl_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DayControl_MouseDoubleClick_1(object sender, MouseEventArgs e)
         {
             EventCreationForm eventFillForm = new EventCreationForm(int.Parse(labelCustomEvent.Text), _eventControls);
             eventFillForm.FormClosed += (s, e) =>

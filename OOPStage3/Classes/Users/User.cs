@@ -12,28 +12,27 @@ namespace OOPStage3.Classes.Users
         protected string Name { get; set; }
         protected string Password { get; set; }
         protected string Email { get; set; }
-        protected List<string> Courses = new();
+
         public User(string name, string password, string email)
         {
             Name = name;
             Password = password;
             Email = email;
         }
-
-        public abstract List<string> GetInfo();
         public string[] GetBaseInfo()
         {
             string[] info = new string[] { this.Name, this.Password, this.Email};
             return info;
         }
-        public virtual void AddInfo(string paramater)
-        {
-            Courses.Add(paramater);
-        }
+
         public virtual List<Student> MyStudents()
         {
             List<Student> students = new();
             return students;
+        }
+        public override string ToString()
+        {
+            return Name;
         }
         public decimal AverageGrade(List<Grade> grades)
         {
@@ -43,13 +42,9 @@ namespace OOPStage3.Classes.Users
             return Math.Floor(grades
                             .Select(g => g.Amount).Average());
         }
-        public virtual List<string> GetCourses()
-        {
-            return Courses;
-        }
-        public override string ToString()
-        {
-            return Name;
-        }
+        public abstract List<string> GetCourses();
+        public abstract List<string> GetCourses(string lookupParam);
+        public abstract void AddInfo(string paramater);
+        public abstract List<string> GetInfo();
     }
 }
