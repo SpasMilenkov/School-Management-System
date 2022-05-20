@@ -1,6 +1,6 @@
-﻿using OOPStage3.Classes.Controls;
-using OOPStage3.Classes.Users;
-using OOPStage3.Properties;
+﻿using OOPStage3.Properties;
+using OOPStage3Library.Classes.Controls;
+using OOPStage3Library.Classes.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OOPStage3.Classes;
-using OOPStage3.Classes.Controls;
-using OOPStage3.Classes.Users;
 using OOPStage3.Properties;
 using OOPStage3.Views;
+using OOPStage3Library.Classes;
+using OOPStage3Library.Classes.Controls;
+using OOPStage3Library.Classes.Users;
 
 namespace OOPStage3
 {

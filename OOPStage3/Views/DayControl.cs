@@ -1,14 +1,9 @@
-﻿using OOPStage3.Classes.Controls;
-using OOPStage3.Classes.Events;
-using OOPStage3.Classes.Users;
+﻿using OOPStage3Library.Classes.Controls;
+using OOPStage3Library.Classes.Events;
+using OOPStage3Library.Classes.Users;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OOPStage3.Views
@@ -18,7 +13,8 @@ namespace OOPStage3.Views
         private Event _customEvent;
         private EventControls _eventControls = new();
         private readonly User _user;
-        public DayControl(User user)
+        private int _month, _year;
+        public DayControl(User user, int month, int year)
         {
             InitializeComponent();
             SetStyle(ControlStyles.UserPaint |
@@ -28,9 +24,11 @@ namespace OOPStage3.Views
             this.ForeColor = Color.White;
             this.BackColor = Color.FromArgb(100, 0, 0, 0);
             _user = user;
-            if (_eventControls.EventExists(day))
+            _year = year;
+            _month = month;
+            if (_eventControls.EventExists(day, month, year))
             {
-                var firstEvent = _eventControls.GetEvent(int.Parse(labelCustomEvent.Text)).First();
+                var firstEvent = _eventControls.GetEvent(int.Parse(labelCustomEvent.Text), month, year).First();
                 this.BackColor = Color.FromArgb(100, firstEvent.GetColor());
             }
             label.Text = "";
@@ -48,7 +46,7 @@ namespace OOPStage3.Views
             EventCreationForm eventFillForm = new EventCreationForm(int.Parse(labelCustomEvent.Text), _eventControls, _user);
             eventFillForm.FormClosed += (s, e) =>
             {
-                if (_eventControls.GetEvent(int.Parse(labelCustomEvent.Text)).Count() != 0)
+                if (_eventControls.GetEvent(int.Parse(labelCustomEvent.Text), _month, _year).Count() != 0)
                 {
 
                     this.BackColor = eventFillForm.BackColor;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOPStage3.Classes.Events
+namespace OOPStage3Library.Classes.Events
 {
     public class Lecture : Event
     {

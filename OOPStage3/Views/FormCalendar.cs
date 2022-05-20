@@ -4,13 +4,13 @@ using System.Windows.Forms;
 using OOPStage3.Properties;
 using System.Reflection;
 using System.Globalization;
-using OOPStage3.Classes.Users;
+using OOPStage3Library.Classes.Users;
 
 namespace OOPStage3.Views
 {
     public partial class FormCalendar : Form
     {
-        public static int month, year;
+        public static int _month, _year;
         private User _user;
         //private EventControls _eventControls;
 
@@ -35,41 +35,41 @@ namespace OOPStage3.Views
         private void DisplayDays()
         {
             DateTime now = DateTime.Now;
-            month = now.Month;
-            year = now.Year;
+            _month = now.Month;
+            _year = now.Year;
         }
         private void FormCalendar_Load(object sender, EventArgs e)
         {
             DisplayDays();
-            FillCalendar(month, year);
+            FillCalendar(_month, _year);
         }
 
         private void labelNext_Click(object sender, EventArgs e)
         {
             //clear the day containers
             flowLayoutPanelDays.Controls.Clear();
-            month++;
-            if (month == 13)
+            _month++;
+            if (_month == 13)
             {
-                year++;
-                month = 1;
+                _year++;
+                _month = 1;
             }
 
-            FillCalendar(month, year);
+            FillCalendar(_month, _year);
         }
 
         private void labelBack_Click(object sender, EventArgs e)
         {
             //clear the day containers
             flowLayoutPanelDays.Controls.Clear();
-            month--;
+            _month--;
             //getting the first day of the month
-            if (month == 0)
+            if (_month == 0)
             {
-                year--;
-                month = 12;
+                _year--;
+                _month = 12;
             }
-            FillCalendar(month, year);
+            FillCalendar(_month, _year);
         }
 
         public void FillCalendar(int month, int year)
@@ -93,7 +93,7 @@ namespace OOPStage3.Views
 
             for (int i = 1; i <= daysCount; i++)
             {
-                DayControl ucdays = new(_user);
+                DayControl ucdays = new(_user, month, year);
                 ucdays.Days(i);
                 flowLayoutPanelDays.Controls.Add(ucdays);
             }

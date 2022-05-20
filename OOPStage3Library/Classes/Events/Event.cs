@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace OOPStage3.Classes.Events
+namespace OOPStage3Library.Classes.Events
 {
     public class Event
     {

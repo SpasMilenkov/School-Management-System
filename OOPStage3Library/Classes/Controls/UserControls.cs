@@ -1,4 +1,4 @@
-﻿using OOPStage3.Classes.Users;
+﻿using OOPStage3Library.Classes.Users;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace OOPStage3.Classes.Controls
+namespace OOPStage3Library.Classes.Controls
 {
     [Serializable]
     public class UserControls
@@ -15,7 +15,6 @@ namespace OOPStage3.Classes.Controls
         private List<User> _people = new();
         private List<Grade> _grades = new();
         private Dictionary<string, List<string>> _subjects = new();
-        // interface za da otdelq logikata 
         public void AddUser(User person)
         {
             string[] info = person.GetBaseInfo();

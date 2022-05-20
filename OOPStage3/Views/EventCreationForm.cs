@@ -1,15 +1,9 @@
-﻿using OOPStage3.Classes.Controls;
-using OOPStage3.Classes.Events;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using OOPStage3.Classes.Users;
+using OOPStage3Library.Classes.Controls;
+using OOPStage3Library.Classes.Events;
+using OOPStage3Library.Classes.Users;
 
 namespace OOPStage3.Views
 {
@@ -26,8 +20,8 @@ namespace OOPStage3.Views
             _day = day;
             _user = user;
             labelDay.Text = day.ToString();
-            labelMonth.Text = FormCalendar.month.ToString();
-            labelYear.Text = FormCalendar.year.ToString();
+            labelMonth.Text = FormCalendar._month.ToString();
+            labelYear.Text = FormCalendar._year.ToString();
 
         }
         private void buttonColor_Click_1(object sender, EventArgs e)

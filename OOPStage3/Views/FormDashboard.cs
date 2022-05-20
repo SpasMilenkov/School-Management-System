@@ -1,6 +1,5 @@
-﻿using OOPStage3.Classes.Controls;
+﻿
 using OxyPlot;
-using OOPStage3.Classes.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,9 +11,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OxyPlot.Series;
 using OxyPlot.Axes;
-using OOPStage3.Classes;
 using OOPStage3.Properties;
 using OxyPlot.Legends;
+using OOPStage3Library.Classes.Controls;
+using OOPStage3Library.Classes.Users;
+using OOPStage3Library.Classes;
 
 namespace OOPStage3.Views
 {

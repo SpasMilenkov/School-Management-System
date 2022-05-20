@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OOPStage3.Classes.Users
+namespace OOPStage3Library.Classes.Users
 {
     [Serializable]
     public abstract class User

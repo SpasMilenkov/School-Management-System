@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOPStage3.Classes
+namespace OOPStage3Library.Classes
 {
     [Serializable]
     public class Grade

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace OOPStage3.Classes.Users
+namespace OOPStage3Library.Classes.Users
 {
     [Serializable]
     public class Professor : User

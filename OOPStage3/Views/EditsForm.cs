@@ -1,6 +1,5 @@
-﻿using OOPStage3.Classes;
-using OOPStage3.Classes.Controls;
-using OOPStage3.Classes.Users;
+﻿using OOPStage3Library.Classes.Controls;
+using OOPStage3Library.Classes.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Windows.Forms;
+using OOPStage3Library.Classes;
 
 namespace OOPStage3.Views
 {

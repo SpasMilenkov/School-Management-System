@@ -1,4 +1,4 @@
-﻿using OOPStage3.Classes.Events;
+﻿using OOPStage3Library.Classes.Events;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace OOPStage3.Classes.Controls
+namespace OOPStage3Library.Classes.Controls
 {
     [Serializable]
     public class EventControls
