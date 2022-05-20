@@ -9,13 +9,13 @@ namespace OOPStage3.Classes.Events
 {
     public class Event
     {
-        public DateTime Date;
-        public string Name;
-        public string Description;
-        public string Subject;
-        public string Course;
-        public Color Color;
-        public string Organizer;
+        protected DateTime Date;
+        protected string Name;
+        protected string Description;
+        protected string Subject;
+        protected string Course;
+        protected Color Color;
+        protected string Organizer;
 
         public Event(string name, string description, string organizer, string subject, string course, Color color)
         {
@@ -25,7 +25,24 @@ namespace OOPStage3.Classes.Events
             Course = course;
             Color = color;
             Organizer = organizer;
+        }   
+        public List<String> GetEventInfo()
+        {
+            List<String> eventsInfo = new();
+            eventsInfo.Add(Name);
+            eventsInfo.Add(Organizer);
+            eventsInfo.Add(Subject);
+            eventsInfo.Add(Course);
+            eventsInfo.Add(Description);
+            return eventsInfo;
         }
-
+        public Color GetColor()
+        {
+            return Color;
+        }
+        public DateTime GetDate()
+        {
+            return Date;
+        }
     }
 }

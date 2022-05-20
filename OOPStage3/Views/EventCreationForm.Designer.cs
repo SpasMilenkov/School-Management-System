@@ -36,8 +36,6 @@
             this.labelMonth = new System.Windows.Forms.Label();
             this.labelYear = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.checkBoxLab = new System.Windows.Forms.CheckBox();
-            this.checkBoxLecture = new System.Windows.Forms.CheckBox();
             this.buttonColor = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,6 +45,8 @@
             this.textBoxCourse = new System.Windows.Forms.TextBox();
             this.labelConfirm = new System.Windows.Forms.Label();
             this.labelCancel = new System.Windows.Forms.Label();
+            this.radioButtonLecture = new System.Windows.Forms.RadioButton();
+            this.radioButtonLabExc = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label1
@@ -120,28 +120,6 @@
             this.label9.Size = new System.Drawing.Size(97, 15);
             this.label9.TabIndex = 47;
             this.label9.Text = "Type of the event";
-            // 
-            // checkBoxLab
-            // 
-            this.checkBoxLab.AutoSize = true;
-            this.checkBoxLab.Location = new System.Drawing.Point(12, 144);
-            this.checkBoxLab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBoxLab.Name = "checkBoxLab";
-            this.checkBoxLab.Size = new System.Drawing.Size(133, 19);
-            this.checkBoxLab.TabIndex = 46;
-            this.checkBoxLab.Text = "Laboratory Excersise";
-            this.checkBoxLab.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxLecture
-            // 
-            this.checkBoxLecture.AutoSize = true;
-            this.checkBoxLecture.Location = new System.Drawing.Point(12, 122);
-            this.checkBoxLecture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBoxLecture.Name = "checkBoxLecture";
-            this.checkBoxLecture.Size = new System.Drawing.Size(65, 19);
-            this.checkBoxLecture.TabIndex = 45;
-            this.checkBoxLecture.Text = "Lecture";
-            this.checkBoxLecture.UseVisualStyleBackColor = true;
             // 
             // buttonColor
             // 
@@ -229,11 +207,35 @@
             this.labelCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelCancel.Click += new System.EventHandler(this.labelCancel_Click);
             // 
+            // radioButtonLecture
+            // 
+            this.radioButtonLecture.AutoSize = true;
+            this.radioButtonLecture.Location = new System.Drawing.Point(12, 122);
+            this.radioButtonLecture.Name = "radioButtonLecture";
+            this.radioButtonLecture.Size = new System.Drawing.Size(64, 19);
+            this.radioButtonLecture.TabIndex = 59;
+            this.radioButtonLecture.TabStop = true;
+            this.radioButtonLecture.Text = "Lecture";
+            this.radioButtonLecture.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonLabExc
+            // 
+            this.radioButtonLabExc.AutoSize = true;
+            this.radioButtonLabExc.Location = new System.Drawing.Point(12, 143);
+            this.radioButtonLabExc.Name = "radioButtonLabExc";
+            this.radioButtonLabExc.Size = new System.Drawing.Size(132, 19);
+            this.radioButtonLabExc.TabIndex = 60;
+            this.radioButtonLabExc.TabStop = true;
+            this.radioButtonLabExc.Text = "Laboratory Excersise";
+            this.radioButtonLabExc.UseVisualStyleBackColor = true;
+            // 
             // EventCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 356);
+            this.ClientSize = new System.Drawing.Size(703, 360);
+            this.Controls.Add(this.radioButtonLabExc);
+            this.Controls.Add(this.radioButtonLecture);
             this.Controls.Add(this.labelConfirm);
             this.Controls.Add(this.labelCancel);
             this.Controls.Add(this.label6);
@@ -246,8 +248,6 @@
             this.Controls.Add(this.labelMonth);
             this.Controls.Add(this.labelYear);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.checkBoxLab);
-            this.Controls.Add(this.checkBoxLecture);
             this.Controls.Add(this.buttonColor);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -270,8 +270,6 @@
         private System.Windows.Forms.Label labelMonth;
         private System.Windows.Forms.Label labelYear;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.CheckBox checkBoxLab;
-        private System.Windows.Forms.CheckBox checkBoxLecture;
         private System.Windows.Forms.Button buttonColor;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -281,5 +279,7 @@
         private System.Windows.Forms.TextBox textBoxCourse;
         private System.Windows.Forms.Label labelConfirm;
         private System.Windows.Forms.Label labelCancel;
+        private System.Windows.Forms.RadioButton radioButtonLecture;
+        private System.Windows.Forms.RadioButton radioButtonLabExc;
     }
 }

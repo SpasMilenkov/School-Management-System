@@ -21,14 +21,31 @@ namespace OOPStage3.Classes.Controls
         }
         public List<Event> GetEvent(int day)
         {
-            return _events
-                .Where(e => e.Date.Day == day && e.Date.Month == FormCalendar.month && e.Date.Year == FormCalendar.year)
-                .ToList();
+            List<Event> events = new();
+            foreach (Event customEvent in _events)
+            {
+                DateTime date = customEvent.GetDate();
+                if (date.Day != day || date.Month != FormCalendar.month || date.Year != FormCalendar.year)
+                    break;
+                events.Add(customEvent);
+            }
+            return events;
+
+            //return _events
+            //    .Where(e => e.GetDate().Day == day && e.Date.Month == FormCalendar.month && e.Date.Year == FormCalendar.year)
+            //    .ToList();
         }
         public bool EventExists(int day)
         {
-            return _events
-                .Any(e => e.Date.Day == day && e.Date.Day == FormCalendar.month && e.Date.Year == FormCalendar.year);
+            foreach (Event customeEvent in _events)
+            {
+                DateTime date = customeEvent.GetDate();
+                if (date.Day == day && date.Month == FormCalendar.month && date.Year == FormCalendar.year)
+                    return true;
+            }
+            return false;
+            //return _events
+            //    .Any(e => e.Date.Day == day && e.Date.Day == FormCalendar.month && e.Date.Year == FormCalendar.year);
         }
 
         public void SaveEvents()

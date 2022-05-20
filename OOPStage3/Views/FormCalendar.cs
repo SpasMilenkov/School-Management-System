@@ -12,20 +12,23 @@ using System.Reflection;
 using OOPStage3.Classes.Controls;
 using OOPStage3.Classes.Events;
 using System.Globalization;
+using OOPStage3.Classes.Users;
 
 namespace OOPStage3.Views
 {
     public partial class FormCalendar : Form
     {
         public static int month, year;
+        private User _user;
         //private EventControls _eventControls;
 
-        public FormCalendar(byte s)
+        public FormCalendar(byte s, User user)
         {
             InitializeComponent();
             typeof(FlowLayoutPanel).InvokeMember("DoubleBuffered",
                           BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
                           null, flowLayoutPanelDays, new object[] { true });
+            _user = user;
             switch (s)
             {
                 case 1: this.BackgroundImage = Resources.theme1; break;
@@ -98,7 +101,7 @@ namespace OOPStage3.Views
 
             for (int i = 1; i <= daysCount; i++)
             {
-                DayControl ucdays = new();
+                DayControl ucdays = new(_user);
                 ucdays.Days(i);
                 flowLayoutPanelDays.Controls.Add(ucdays);
             }

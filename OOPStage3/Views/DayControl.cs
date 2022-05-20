@@ -1,5 +1,6 @@
 ﻿using OOPStage3.Classes.Controls;
 using OOPStage3.Classes.Events;
+using OOPStage3.Classes.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,8 @@ namespace OOPStage3.Views
     {
         private Event _customEvent;
         private EventControls _eventControls = new();
-        public DayControl()
+        private readonly User _user;
+        public DayControl(User user)
         {
             InitializeComponent();
             SetStyle(ControlStyles.UserPaint |
@@ -25,11 +27,11 @@ namespace OOPStage3.Views
             int day = Convert.ToInt32(labelCustomEvent.Text);
             this.ForeColor = Color.White;
             this.BackColor = Color.FromArgb(100, 0, 0, 0);
+            _user = user;
             if (_eventControls.EventExists(day))
             {
                 var firstEvent = _eventControls.GetEvent(int.Parse(labelCustomEvent.Text)).First();
-                //string[] splitter = firstEvent.Color.Split(',');
-                this.BackColor = Color.FromArgb(100, firstEvent.Color);
+                this.BackColor = Color.FromArgb(100, firstEvent.GetColor());
             }
             label.Text = "";
 
@@ -39,30 +41,20 @@ namespace OOPStage3.Views
         {
             labelCustomEvent.Text = numday + "";
             if (_customEvent != null)
-                label.Text = _customEvent.Name;
+                label.Text = _user.GetBaseInfo()[0];
         }
-
-        private void DayControl_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void DayControl_MouseDoubleClick_1(object sender, MouseEventArgs e)
         {
-            EventCreationForm eventFillForm = new EventCreationForm(int.Parse(labelCustomEvent.Text), _eventControls);
+            EventCreationForm eventFillForm = new EventCreationForm(int.Parse(labelCustomEvent.Text), _eventControls, _user);
             eventFillForm.FormClosed += (s, e) =>
             {
-                if (_customEvent != null)
+                if (_eventControls.GetEvent(int.Parse(labelCustomEvent.Text)).Count() != 0)
                 {
-                    _customEvent = _eventControls.GetEvent(int.Parse(labelCustomEvent.Text)).First();
-                    if (_customEvent != null)
-                    {
-                        this.BackColor = eventFillForm.BackColor;
-                        label.Text = _customEvent.Name;
-                    }
-                }
 
-            };
+                    this.BackColor = eventFillForm.BackColor;
+                    label.Text = _user.GetBaseInfo()[0];
+                }
+            };  
             eventFillForm.ShowDialog();
         }
     }

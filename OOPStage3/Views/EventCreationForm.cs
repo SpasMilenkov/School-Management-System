@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OOPStage3.Classes.Users;
 
 namespace OOPStage3.Views
 {
@@ -17,11 +18,13 @@ namespace OOPStage3.Views
         private List<string> _properties = new List<string>();
         private int _day;
         private EventControls _controls;
-        public EventCreationForm(int day, EventControls controller)
+        private User _user;
+        public EventCreationForm(int day, EventControls controller, User user)
         {
             InitializeComponent();
             _controls = controller;
             _day = day;
+            _user = user;
             labelDay.Text = day.ToString();
             labelMonth.Text = FormCalendar.month.ToString();
             labelYear.Text = FormCalendar.year.ToString();
@@ -38,11 +41,11 @@ namespace OOPStage3.Views
 
         private void labelConfirm_Click(object sender, EventArgs e)
         {
-            if (checkBoxLecture.Checked)
+            if (radioButtonLecture.Checked)
             {
                 Lecture lecture = new Lecture(textBoxEventName.Text,
                     richTextBoxDescription.Text,
-                    textBoxOrganizer.Text,
+                    _user.GetBaseInfo()[0],
                     textBoxSubject.Text,
                     textBoxCourse.Text,
                     buttonColor.BackColor);
@@ -51,11 +54,11 @@ namespace OOPStage3.Views
                 this.Close();
 
             }
-            else if (checkBoxLab.Checked)
+            else if (radioButtonLabExc.Checked)
             {
                 LabExercise lab = new(textBoxEventName.Text,
                     richTextBoxDescription.Text,
-                    textBoxOrganizer.Text,
+                    _user.GetBaseInfo()[0],
                     textBoxSubject.Text,
                     textBoxCourse.Text,
                     buttonColor.BackColor

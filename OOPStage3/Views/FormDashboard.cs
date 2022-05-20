@@ -292,7 +292,7 @@ namespace OOPStage3.Views
         }
         private void LabelCalendar_Click_1(object sender, EventArgs e)
         {
-            FormCalendar calendar = new(CurrentTheme);
+            FormCalendar calendar = new(CurrentTheme, _person);
             calendar.ShowDialog();
         }
 
