@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 
 namespace OOPStage3.Classes.Events
@@ -25,7 +22,7 @@ namespace OOPStage3.Classes.Events
             Course = course;
             Color = color;
             Organizer = organizer;
-        }   
+        }
         public List<String> GetEventInfo()
         {
             List<String> eventsInfo = new();

@@ -1,13 +1,10 @@
 ﻿using OOPStage3.Classes.Events;
-using OOPStage3.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOPStage3.Classes.Controls
 {
@@ -19,13 +16,13 @@ namespace OOPStage3.Classes.Controls
         {
             _events.Add(customEvent);
         }
-        public List<Event> GetEvent(int day)
+        public List<Event> GetEvent(int day, int month, int year)
         {
             List<Event> events = new();
             foreach (Event customEvent in _events)
             {
                 DateTime date = customEvent.GetDate();
-                if (date.Day != day || date.Month != FormCalendar.month || date.Year != FormCalendar.year)
+                if (date.Day != day || date.Month != month || date.Year != year)
                     break;
                 events.Add(customEvent);
             }
@@ -35,12 +32,12 @@ namespace OOPStage3.Classes.Controls
             //    .Where(e => e.GetDate().Day == day && e.Date.Month == FormCalendar.month && e.Date.Year == FormCalendar.year)
             //    .ToList();
         }
-        public bool EventExists(int day)
+        public bool EventExists(int day, int month, int year)
         {
             foreach (Event customeEvent in _events)
             {
                 DateTime date = customeEvent.GetDate();
-                if (date.Day == day && date.Month == FormCalendar.month && date.Year == FormCalendar.year)
+                if (date.Day == day && date.Month == month && date.Year == year)
                     return true;
             }
             return false;
