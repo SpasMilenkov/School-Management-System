@@ -32,9 +32,10 @@ namespace OOPStage3.Views
                 buttonColor.BackColor = cd.Color;
             }
         }
-
+        //Just add the datetime as arguments 
         private void labelConfirm_Click(object sender, EventArgs e)
         {
+            DateTime date = new(int.Parse(labelYear.Text), int.Parse(labelMonth.Text), int.Parse(labelDay.Text));
             if (radioButtonLecture.Checked)
             {
                 Lecture lecture = new Lecture(textBoxEventName.Text,
@@ -42,11 +43,13 @@ namespace OOPStage3.Views
                     _user.GetBaseInfo()[0],
                     textBoxSubject.Text,
                     textBoxCourse.Text,
-                    buttonColor.BackColor);
+                    buttonColor.BackColor,
+                    date
+                    );
                 _controls.AddEvent(lecture);
                 this.BackColor = buttonColor.BackColor;
                 this.Close();
-
+                _controls.SaveEvents();
             }
             else if (radioButtonLabExc.Checked)
             {
@@ -55,11 +58,13 @@ namespace OOPStage3.Views
                     _user.GetBaseInfo()[0],
                     textBoxSubject.Text,
                     textBoxCourse.Text,
-                    buttonColor.BackColor
+                    buttonColor.BackColor,
+                    date
                     );
                 _controls.AddEvent(lab);
                 this.BackColor = buttonColor.BackColor;
                 this.Close();
+                _controls.SaveEvents();
             }
             else
                 MessageBox.Show("Select the type of the event");

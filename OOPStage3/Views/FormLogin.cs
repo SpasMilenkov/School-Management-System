@@ -31,16 +31,18 @@ namespace OOPStage3
             //Testing purposes
 
 
-            Student student = new("Test student", "Marinata", "testmail", "001", "77"); List<Student> students = new();
+            Student student = new("Meesho", "Marinata", "testmail", "001", "76"); List<Student> students = new();
             List<string> ids = new() { "001" };
             students.AddRange(vault.FindStudents(ids));
             Parent parent = new("Test parent", "Marinata", "testmail1", students);
             Professor professor = new("Test professor", "Marinata", "testmail1", "test title");
             Admin admin = new("Test admin", "Marinata", "testmail");
+
             vault.AddUser(student);
             vault.AddUser(parent);
             vault.AddUser(professor);
             vault.AddUser(admin);
+
             for (int i = 3; i < 6; i++)
             {
                 Grade grade = new(i, "OOP", "002", "Test professor", DateTime.Now);
@@ -85,6 +87,9 @@ namespace OOPStage3
             vault.GetUserData();
             vault.GetCourseData();
             vault.GetGradesData();
+            List<string> teaches = new() { "OOP" };
+            Admin admin1 = new("Alexander Petkov", "Ventrologfist1", "TUmail", "Chief Asistant", teaches);
+            vault.AddUser(admin1);
         }
     }
 }

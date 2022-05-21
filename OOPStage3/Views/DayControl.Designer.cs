@@ -59,6 +59,7 @@
             this.Controls.Add(this.labelCustomEvent);
             this.Name = "DayControl";
             this.Size = new System.Drawing.Size(210, 100);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.DayControl_Paint);
             this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DayControl_MouseDoubleClick_1);
             this.ResumeLayout(false);
             this.PerformLayout();

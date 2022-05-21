@@ -5,6 +5,7 @@ using OOPStage3.Properties;
 using System.Reflection;
 using System.Globalization;
 using OOPStage3Library.Classes.Users;
+using OOPStage3Library.Classes.Controls;
 
 namespace OOPStage3.Views
 {
@@ -12,7 +13,7 @@ namespace OOPStage3.Views
     {
         public static int _month, _year;
         private User _user;
-        //private EventControls _eventControls;
+        private EventControls _eventControls;
 
         public FormCalendar(byte s, User user)
         {
@@ -30,7 +31,7 @@ namespace OOPStage3.Views
                 case 5: this.BackgroundImage = Resources.theme5; break;
             }
             this.ForeColor = Color.White;
-
+            _eventControls.LoadEvents();
         }
         private void DisplayDays()
         {
@@ -93,7 +94,7 @@ namespace OOPStage3.Views
 
             for (int i = 1; i <= daysCount; i++)
             {
-                DayControl ucdays = new(_user, month, year);
+                DayControl ucdays = new(_user, month, year, _eventControls);
                 ucdays.Days(i);
                 flowLayoutPanelDays.Controls.Add(ucdays);
             }

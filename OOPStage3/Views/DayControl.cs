@@ -11,10 +11,10 @@ namespace OOPStage3.Views
     public partial class DayControl : UserControl
     {
         private Event _customEvent;
-        private EventControls _eventControls = new();
+        private EventControls _eventControls;
         private readonly User _user;
         private int _month, _year;
-        public DayControl(User user, int month, int year)
+        public DayControl(User user, int month, int year, EventControls controls)
         {
             InitializeComponent();
             SetStyle(ControlStyles.UserPaint |
@@ -25,11 +25,12 @@ namespace OOPStage3.Views
             this.BackColor = Color.FromArgb(100, 0, 0, 0);
             _user = user;
             _year = year;
+            _eventControls = controls;
             _month = month;
             if (_eventControls.EventExists(day, month, year))
             {
-                var firstEvent = _eventControls.GetEvent(int.Parse(labelCustomEvent.Text), month, year).First();
-                this.BackColor = Color.FromArgb(100, firstEvent.GetColor());
+                var _customEvent = _eventControls.GetEvent(int.Parse(labelCustomEvent.Text), month, year).First();
+                this.BackColor = Color.FromArgb(100, _customEvent.GetColor());
             }
             label.Text = "";
 
@@ -41,6 +42,18 @@ namespace OOPStage3.Views
             if (_customEvent != null)
                 label.Text = _user.GetBaseInfo()[0];
         }
+
+        private void DayControl_Paint(object sender, PaintEventArgs e)
+        {
+            if (_eventControls.EventExists(int.Parse(labelCustomEvent.Text), _month, _year))
+            {
+                var _customEvent = _eventControls.GetEvent(int.Parse(labelCustomEvent.Text), _month, _year).First();
+                this.BackColor = Color.FromArgb(100, _customEvent.GetColor());
+                label.Text =  _customEvent.GetEventInfo()[0];
+                return;
+            }
+        }
+
         private void DayControl_MouseDoubleClick_1(object sender, MouseEventArgs e)
         {
             EventCreationForm eventFillForm = new EventCreationForm(int.Parse(labelCustomEvent.Text), _eventControls, _user);

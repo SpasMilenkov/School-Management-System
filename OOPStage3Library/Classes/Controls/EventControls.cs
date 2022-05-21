@@ -22,15 +22,10 @@ namespace OOPStage3Library.Classes.Controls
             foreach (Event customEvent in _events)
             {
                 DateTime date = customEvent.GetDate();
-                if (date.Day != day || date.Month != month || date.Year != year)
-                    break;
-                events.Add(customEvent);
+                if (date.Day == day && date.Month == month && date.Year == year)
+                    events.Add(customEvent);
             }
             return events;
-
-            //return _events
-            //    .Where(e => e.GetDate().Day == day && e.Date.Month == FormCalendar.month && e.Date.Year == FormCalendar.year)
-            //    .ToList();
         }
         public bool EventExists(int day, int month, int year)
         {
@@ -41,8 +36,6 @@ namespace OOPStage3Library.Classes.Controls
                     return true;
             }
             return false;
-            //return _events
-            //    .Any(e => e.Date.Day == day && e.Date.Day == FormCalendar.month && e.Date.Year == FormCalendar.year);
         }
 
         public void SaveEvents()

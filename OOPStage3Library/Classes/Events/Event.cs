@@ -14,7 +14,7 @@ namespace OOPStage3Library.Classes.Events
         protected Color Color;
         protected string Organizer;
 
-        public Event(string name, string description, string organizer, string subject, string course, Color color)
+        public Event(string name, string description, string organizer, string subject, string course, Color color, DateTime date)
         {
             Name = name;
             Description = description;
@@ -22,6 +22,7 @@ namespace OOPStage3Library.Classes.Events
             Course = course;
             Color = color;
             Organizer = organizer;
+            Date = date;
         }
         public List<String> GetEventInfo()
         {
