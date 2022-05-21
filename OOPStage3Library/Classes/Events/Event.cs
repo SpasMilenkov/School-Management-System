@@ -4,6 +4,7 @@ using System.Drawing;
 
 namespace OOPStage3Library.Classes.Events
 {
+    [Serializable]
     public class Event
     {
         protected DateTime Date;

@@ -20,22 +20,27 @@ namespace OOPStage3Library.Classes.Users
         }
         public override void AddInfo(string paramater)
         {
-            throw new NotImplementedException();
+            Teaches.Add(paramater);
         }
 
         public override List<string> GetCourses()
         {
-            throw new NotImplementedException();
+            return Teaches;
         }
 
         public override List<string> GetCourses(string lookupParam)
         {
-            throw new NotImplementedException();
+            return Teaches;
         }
 
         public override List<string> GetInfo()
         {
-            throw new NotImplementedException();
+            List<string> info = new();
+            if (IsTeacher == true)
+                info.Add("IsProf");
+
+            info.Add(Title);
+            return info;
         }
     }
 }

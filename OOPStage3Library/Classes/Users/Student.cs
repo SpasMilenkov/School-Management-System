@@ -20,7 +20,6 @@ namespace OOPStage3Library.Classes.Users
             List<string> info = new();
             info.Add(_id);
             info.Add(_group);
-            info.AddRange(Courses);
             return info;
         }
 

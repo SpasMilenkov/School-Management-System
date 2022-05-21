@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace OOPStage3Library.Classes.Events
 {
+    [Serializable]
     public class Lecture : Event
     {
         public Lecture(string name, string description, string organizer, string subject, string course, Color color, DateTime date) : base(name, description, organizer, subject, course, color, date)

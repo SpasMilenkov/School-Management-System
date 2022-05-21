@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelForm = new System.Windows.Forms.Panel();
+            this.labelAddMoreSubjects = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -56,6 +57,7 @@
             // 
             // panelForm
             // 
+            this.panelForm.Controls.Add(this.labelAddMoreSubjects);
             this.panelForm.Controls.Add(this.label4);
             this.panelForm.Controls.Add(this.label3);
             this.panelForm.Controls.Add(this.textBox3);
@@ -73,6 +75,21 @@
             this.panelForm.Name = "panelForm";
             this.panelForm.Size = new System.Drawing.Size(413, 450);
             this.panelForm.TabIndex = 27;
+            // 
+            // labelAddMoreSubjects
+            // 
+            this.labelAddMoreSubjects.BackColor = System.Drawing.Color.Transparent;
+            this.labelAddMoreSubjects.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelAddMoreSubjects.ForeColor = System.Drawing.Color.White;
+            this.labelAddMoreSubjects.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelAddMoreSubjects.Location = new System.Drawing.Point(71, 282);
+            this.labelAddMoreSubjects.Name = "labelAddMoreSubjects";
+            this.labelAddMoreSubjects.Size = new System.Drawing.Size(272, 36);
+            this.labelAddMoreSubjects.TabIndex = 26;
+            this.labelAddMoreSubjects.Text = "Add another subject";
+            this.labelAddMoreSubjects.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAddMoreSubjects.Visible = false;
+            this.labelAddMoreSubjects.Click += new System.EventHandler(this.labelAddMoreSubjects_Click);
             // 
             // label4
             // 
@@ -367,5 +384,6 @@
         private System.Windows.Forms.RadioButton radioButtonStaff;
         private System.Windows.Forms.RadioButton radioButtonStudents;
         private System.Windows.Forms.RadioButton radioButtonGrades;
+        private System.Windows.Forms.Label labelAddMoreSubjects;
     }
 }

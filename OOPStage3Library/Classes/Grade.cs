@@ -22,5 +22,9 @@ namespace OOPStage3Library.Classes
             GradedBy = gradedBy;
             Date = date;
         }
+        public override string ToString()
+        {
+            return $"{OwnerID} {Subject}";
+        }
     }
 }

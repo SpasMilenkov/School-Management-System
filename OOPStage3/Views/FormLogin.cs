@@ -34,7 +34,7 @@ namespace OOPStage3
             Student student = new("Meesho", "Marinata", "testmail", "001", "76"); List<Student> students = new();
             List<string> ids = new() { "001" };
             students.AddRange(vault.FindStudents(ids));
-            Parent parent = new("Test parent", "Marinata", "testmail1", students);
+            Parent parent = new("Test parent", "Marinata", "testmail1", "testAdress", "123456789", students);
             Professor professor = new("Test professor", "Marinata", "testmail1", "test title");
             Admin admin = new("Test admin", "Marinata", "testmail");
 

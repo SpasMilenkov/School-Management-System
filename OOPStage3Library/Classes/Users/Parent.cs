@@ -1,21 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OOPStage3Library.Classes.Users
 {
     [Serializable]
     public class Parent : User
     {
-        public List<Student> Students = new();
-
-        public Parent(string name, string password, string email, List<Student> students) : base(name, password, email)
+        private List<Student> Students = new();
+        private string Address;
+        private string Phone;
+        public Parent(string name, string password, string email, string address, string phone, List<Student> students) : base(name, password, email)
         {
             Students = students;
+            Address = address;
+            Phone = phone;
         }
 
         public override List<string> GetInfo()
         {
-            throw new NotImplementedException();
+            List<string> info = new List<string>();
+            info.Add(Address);
+            info.Add(Phone);
+             
+            return info; 
         }
         public override List<Student> MyStudents()
         {
@@ -32,7 +40,7 @@ namespace OOPStage3Library.Classes.Users
 
         public override void AddInfo(string paramater)
         {
-            throw new NotImplementedException();
+           
         }
 
         public override List<string> GetCourses()

@@ -2,12 +2,7 @@
 using OOPStage3Library.Classes.Users;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Reflection;
 using System.Windows.Forms;
 using OOPStage3Library.Classes;
@@ -36,6 +31,7 @@ namespace OOPStage3.Views
             panel1.BackColor = backcolor;
             panelForm.BackColor = backcolor;
             radioButtonGrades.Checked = true;
+
             if (user is Professor)
             {
                 radioButtonCourses.Visible = false;
@@ -47,7 +43,7 @@ namespace OOPStage3.Views
         private void labelAdd_Click_1(object sender, EventArgs e)
         {
             foreach (Control item in panelForm.Controls)
-                if ( item is TextBox && item.Visible == true && item.Text == String.Empty)
+                if ( item is TextBox && item.Visible == true && item.Text == String.Empty )
                 {
                     MessageBox.Show("Fill all fields first!");
                     return;
@@ -64,9 +60,13 @@ namespace OOPStage3.Views
             if (radioButtonStaff.Checked)
             {
                 Professor prof = new(textBox2.Text, textBox3.Text, textBox4.Text, label1.Text);
+                foreach (string subject in _subjects)
+                    prof.AddInfo(textBox5.Text);
+
                 _users.Add(prof);
                 listBoxUsers.Items.Add(textBox2.Name);
                 listBoxUsers.Refresh();
+                _subjects.Clear();
                 return;
             }
             if (radioButtonCourses.Checked)
@@ -81,7 +81,7 @@ namespace OOPStage3.Views
                 MessageBox.Show("Invalid input try again!");
                 return;
             }
-            if (radioButtonGrades.Checked)
+            if (radioButtonGrades.Checked && decimal.Parse(textBox3.Text) <= 6 && decimal.Parse(textBox3.Text) >= 2)
             {
                 listBoxUsers.DataSource = _grades;
                 Grade grade = new(decimal.Parse(textBox3.Text),
@@ -89,9 +89,10 @@ namespace OOPStage3.Views
                                                 textBox1.Text,
                                                 _user.GetBaseInfo()[0],
                                                 DateTime.Now);
-                listBoxUsers.Items.Add($"{grade.Amount.ToString()}{grade.OwnerID}{grade.Subject}");
+                listBoxUsers.Items.Add($"{grade.Amount}{grade.OwnerID}{grade.Subject}");
                 listBoxUsers.Refresh();
                 _grades.Add(grade);
+                _grades.Clear();
                 return;
             }
             MessageBox.Show("Please check at least one of the boxes!");
@@ -127,6 +128,7 @@ namespace OOPStage3.Views
             label4.Visible = true;
             label3.Visible = true;
             this.labelAdd.Location = new Point(300, 390);
+            labelAddMoreSubjects.Visible = false;
         }
 
         private void radioButtonStudents_CheckedChanged(object sender, EventArgs e)
@@ -145,6 +147,7 @@ namespace OOPStage3.Views
             textBox3.Visible = true;
             label4.Visible = true;
             label3.Visible = true;
+            labelAddMoreSubjects.Visible = false;
             this.labelAdd.Location = new Point(300, 390);
         }
 
@@ -164,6 +167,7 @@ namespace OOPStage3.Views
             textBox3.Visible = true;
             label4.Visible = true;
             label3.Visible = true;
+            labelAddMoreSubjects.Visible = true;
             this.labelAdd.Location = new Point(300, 390);
         }
 
@@ -179,8 +183,15 @@ namespace OOPStage3.Views
             textBox4.Visible = false;
             textBox3.Visible = false;
             textBox6.Visible = false;
+            labelAddMoreSubjects.Visible = false;
 
             this.labelAdd.Location = new Point(275, 135);
+        }
+
+        private void labelAddMoreSubjects_Click(object sender, EventArgs e)
+        {
+            _subjects.Add(textBox5.Text);
+            textBox5.Text = " ";
         }
     }
 }

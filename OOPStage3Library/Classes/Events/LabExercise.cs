@@ -3,6 +3,7 @@ using System.Drawing;
 
 namespace OOPStage3Library.Classes.Events
 {
+    [Serializable]
     public class LabExercise : Event
     {
         public LabExercise(string name, string description, string organizer, string subject, string course, Color color, DateTime date) : base(name, description, organizer, subject, course, color, date)
@@ -12,7 +13,6 @@ namespace OOPStage3Library.Classes.Events
 
             if (DateTime.Now.Month == this.Date.Month && DateTime.Now.Year == this.Date.Year && DateTime.Now > this.Date)
                 this.Color = Color.FromArgb(169, 27, 61);
-
         }
     }
 }

@@ -48,11 +48,11 @@ namespace OOPStage3Library.Classes.Controls
 
         public void LoadEvents()
         {
-            if (!File.Exists("data"))
+            if (!File.Exists("EventData"))
                 return;
 
             IFormatter formatter = new BinaryFormatter();
-            using var fs = new FileStream("EventdData", FileMode.Open);
+            using var fs = new FileStream("EventData", FileMode.Open);
             _events = (List<Event>)formatter.Deserialize(fs);
         }
     }

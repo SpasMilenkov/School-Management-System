@@ -48,27 +48,36 @@ namespace OOPStage3.Views
         /// Determines the elements shown on the form depending on the type of user that has logged in
         /// </summary>
         /// 
-        //page control-  OMG
         private void Execute()
         {
             string[] baseinfo = _person.GetBaseInfo();
+            List<string> info = _person.GetInfo();
+
+            labelShowGraphs.Visible = true;
+            labelShowGrades.Visible = true;
 
             Hellolabel.Text = "Hello, " + baseinfo[0];
             labelID.Text = baseinfo[1];
+
             panelNavigation.BackColor = Color.FromArgb(32, 34, 37);
             this.BackColor = Color.FromArgb(47, 49, 54);
             this.ForeColor = Color.White;
-            labelShowGraphs.Visible = true;
-            labelShowGrades.Visible = true;
+
             SetTheme();
 
             if (_person is Admin)
             {
                 labelEditUsers.Visible = true;
-                dataGridView1.Visible = false;
                 plotViewGrades.Visible = false;
+
+                if (info.First() == "IsProf")
+                {
+                    dataGridView1.Visible = false;
+                }
+
                 labelShowGrades.Text = "Show list of grades";
                 labelShowGraphs.Text = "Show List of users";
+
                 listBoxParents.DataSource = _userControls.GetAllParents();
                 listBoxStaffNGrades.DataSource = _userControls.GetAllProfessors();
                 listBoxStudents.DataSource = _userControls.GetAllStudents();
@@ -77,42 +86,50 @@ namespace OOPStage3.Views
             if (_person is Parent)
             {
                 var children = _person.MyStudents();
-                var childinfo = children[currentStudent].GetInfo();
-                var childGrades = _userControls.GetGrades(childinfo[0]);
-                labelID.Visible = true;
-                labelAvgMark.Text = "Average grade: " + _person.AverageGrade(childGrades).ToString();
-                labelAvgMark.Visible = true;
-                labelID.Text = "ID: " + childinfo[0];
-                labelGroup.Visible = true;
-                labelGroup.Text = "Administrative group: " + (childinfo[1]);
+                var childInfo = children[currentStudent].GetInfo();
+                var childGrades = _userControls.GetGrades(childInfo[0]);
+                var courses = _person.GetCourses();
                 List<string> subjects = new();
-                foreach (string course in children[currentStudent].GetCourses())
+
+                foreach (string course in courses)
                     subjects.AddRange(_userControls.GetSubjects(course));
+
+                labelID.Visible = true;
+                labelGroup.Visible = true;
+                labelAvgMark.Visible = true;
+
+                labelAvgMark.Text = "Average grade: " + _person.AverageGrade(childGrades).ToString();
+                labelID.Text = "ID: " + childInfo[0];
+                labelGroup.Text = "Administrative group: " + (childInfo[1]);
                 DisplayGrades(childGrades, subjects);
                 Graph(childGrades, subjects);
                 return;
             }
             if (_person is Professor)
             {
-                labelID.Text = "Title: " + _person.GetInfo()[0];
-                labelEditUsers.Visible = true;
-                labelEditUsers.Text = "Edit Grades";
                 List<string> mysubjects = new();
-                for (int i = 1; i < _person.GetInfo().Count; i++)
-                    mysubjects.Add(_person.GetInfo()[i]);
+                for (int i = 1; i < info.Count; i++)
+                    mysubjects.Add(info[i]);
+
+
+                labelID.Text = "Title: " + info[0];
+                labelEditUsers.Text = "Edit Grades";
+
+                labelEditUsers.Visible = true;
+ 
                 DisplayGrades(_userControls.GetGrades(baseinfo[0]), mysubjects);
                 return;
             }
-            List<Grade> grades = _userControls.GetGrades(_person.GetInfo()[0]);
+            List<Grade> grades = _userControls.GetGrades(info[0]);
             List<String> plotSubjects = new();
             foreach (string course in _person.GetCourses())
                 plotSubjects.AddRange(_userControls.GetSubjects(course));
             labelID.Visible = true;
             labelAvgMark.Text = "Average grade: " + _person.AverageGrade(grades).ToString();
             labelAvgMark.Visible = true;
-            labelID.Text = "ID: " + _person.GetInfo()[0];
+            labelID.Text = "ID: " + info[0];
             labelGroup.Visible = true;
-            labelGroup.Text = "Administrative group: " + (_person.GetInfo()[1]);
+            labelGroup.Text = "Administrative group: " + (info[1]);
             DisplayGrades(grades, plotSubjects);
             Graph(grades, plotSubjects);
 
@@ -210,9 +227,11 @@ namespace OOPStage3.Views
                         SetGridAndPlotStyle(Color.FromArgb(164, 14, 97), Color.FromArgb(139, 40, 94), Color.FromArgb(157, 14, 164));
                         break;
                 }
-                plotViewGrades.Model.Background = OxyColor.FromRgb(panelNavigation.BackColor.R, panelNavigation.BackColor.G, panelNavigation.BackColor.B);
+                if (_person is not Admin)
+                    plotViewGrades.Model.Background = OxyColor.FromRgb(panelNavigation.BackColor.R, panelNavigation.BackColor.G, panelNavigation.BackColor.B);
                 this.BackgroundImage = cForm.BackgroundImage;
                 CurrentTheme = cForm.CurrentTheme;
+
 
             }
         }
@@ -249,14 +268,20 @@ namespace OOPStage3.Views
                 AbsoluteMaximum = 6.0,
                 AbsoluteMinimum = 2,
                 IsZoomEnabled = false,
+
             });
-            plotViewGrades.Model.Axes.Add(new LinearAxis
+            var monthsAxis = new LinearAxis
             {
                 Position = AxisPosition.Bottom,
                 AbsoluteMaximum = 12.0,
                 AbsoluteMinimum = 1,
                 IsZoomEnabled = false,
-            });
+                Title = "Month",
+                MajorStep = 1
+            };
+            plotViewGrades.Model.Axes.Add(monthsAxis);
+
+
             plotViewGrades.Model.Background = OxyColor.FromRgb(panelNavigation.BackColor.R, panelNavigation.BackColor.G, panelNavigation.BackColor.B);
             plotViewGrades.Model.TextColor = OxyColor.FromRgb(255, 255, 255);
             plotViewGrades.Model.Legends.Add(new Legend()
@@ -323,6 +348,7 @@ namespace OOPStage3.Views
                 listBoxParents.BackColor = Color.FromArgb(panelNavigation.BackColor.R, panelNavigation.BackColor.G, panelNavigation.BackColor.B);
                 listBoxStaffNGrades.BackColor = Color.FromArgb(panelNavigation.BackColor.R, panelNavigation.BackColor.G, panelNavigation.BackColor.B);
                 listBoxStudents.BackColor = Color.FromArgb(panelNavigation.BackColor.R, panelNavigation.BackColor.G, panelNavigation.BackColor.B);
+                listBoxStaffNGrades.DataSource = _userControls.GetAllGrades();
                 return;
             }
             dataGridView1.Visible = true;
@@ -370,7 +396,16 @@ namespace OOPStage3.Views
         {
             if (listBoxStaffNGrades.SelectedItems == null)
                 return;
-            FormInfo formInfo = new();
+
+            if(listBoxStaffNGrades.SelectedItem is Grade)
+            {
+                FormInfo formInfo1 = new(panelNavigation.BackColor, (Grade)listBoxStaffNGrades.SelectedItem);
+                formInfo1.BackgroundImage = this.BackgroundImage;
+                formInfo1.ShowDialog();
+                return;
+            }
+            FormInfo formInfo = new(panelNavigation.BackColor, (User)listBoxStaffNGrades.SelectedItem);
+            formInfo.BackgroundImage = this.BackgroundImage;
             formInfo.ShowDialog();
         }
 
@@ -378,7 +413,8 @@ namespace OOPStage3.Views
         {
             if (listBoxStudents.SelectedItem == null)
                 return;
-            FormInfo formInfo = new();
+            FormInfo formInfo = new(panelNavigation.BackColor, (User)listBoxStudents.SelectedItem);
+            formInfo.BackgroundImage = this.BackgroundImage;
             formInfo.ShowDialog();
         }
 
@@ -386,7 +422,8 @@ namespace OOPStage3.Views
         {
             if (listBoxParents.SelectedItem == null)
                 return;
-            FormInfo formInfo = new();
+            FormInfo formInfo = new(panelNavigation.BackColor, (User)listBoxParents.SelectedItem);
+            formInfo.BackgroundImage = this.BackgroundImage;
             formInfo.ShowDialog();
         }
     }

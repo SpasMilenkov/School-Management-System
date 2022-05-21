@@ -13,7 +13,7 @@ namespace OOPStage3.Views
     {
         public static int _month, _year;
         private User _user;
-        private EventControls _eventControls;
+        private EventControls _eventControls = new();
 
         public FormCalendar(byte s, User user)
         {
@@ -98,7 +98,6 @@ namespace OOPStage3.Views
                 ucdays.Days(i);
                 flowLayoutPanelDays.Controls.Add(ucdays);
             }
-
         }
     }
 }

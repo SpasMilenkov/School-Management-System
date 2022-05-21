@@ -46,15 +46,24 @@ namespace OOPStage3.Views
         {
             _children = _userControls.FindStudents(ids);
             Random random = new Random();
-            bool valid = true;
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox && control.Text == "" && control != textBoxID && _children.Count != 0)
-                    valid = false;
+                {
+                    MessageBox.Show("Invalid input! Make sure all fields are filled!");
+                    return;
+                }
             }
-            if (valid)
+            if(textBoxPassword.Text != textBoxConfirmPassword.Text)
             {
-                Parent parent = new Parent(textBoxName.Text, textBoxPassword.Text, textBoxEmail.Text, _children);
+                MessageBox.Show("Passwords do not match try again!");
+                return;
+            }
+            if(!int.TryParse(textBoxPhoneNumber.Text, out _))
+            {
+                MessageBox.Show("Invalid number. Try again!");
+            }
+                Parent parent = new Parent(textBoxName.Text, textBoxPassword.Text, textBoxEmail.Text, textBoxPhoneNumber.Text, textBoxAddress.Text, _children);
                 this.Hide();
                 _userControls.AddUser(parent);
                 FormDashboard dashboard = new FormDashboard(parent, _userControls);
@@ -63,8 +72,7 @@ namespace OOPStage3.Views
                 _userControls.AddUser(parent);
                 dashboard.Show();
                 return;
-            }
-            MessageBox.Show("Invalid input! Make sure all fields are filled!");
+
         }
 
         private void labelLogin_Click(object sender, EventArgs e)
@@ -73,5 +81,6 @@ namespace OOPStage3.Views
             t.Start();
             this.Close();
         }
+
     }
 }
